@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HEFA AI Data Query Agent</title>
+    <meta name="description" content="AI-powered health facility data query agent for Kaduna State Primary Healthcare Centres.">
+    <link rel="icon" type="image/jpeg" href="assets/natview_logo.jpg">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header id="app-header">
+        <div class="header-left">
+            <img src="assets/natview-logo-small.png" alt="NFTI Logo" class="logo">
+            <div class="header-titles">
+                <h1>HEFA Data Query Agent</h1>
+                <p class="subtitle">Kaduna State Health Facility Analytics</p>
+            </div>
+        </div>
+        <div class="header-right">
+            <button class="clinics-btn" id="clinics-btn" onclick="toggleDrawer()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+                View Clinics
+            </button>
+        </div>
+    </header>
+
+    <!-- Clinic Drawer Overlay -->
+    <div class="drawer-overlay" id="drawer-overlay" onclick="toggleDrawer()"></div>
+
+    <!-- Clinic Slide-Out Drawer -->
+    <aside class="clinic-drawer" id="clinic-drawer">
+        <div class="drawer-header">
+            <h2>Available Clinics</h2>
+            <button class="drawer-close" onclick="toggleDrawer()">&times;</button>
+        </div>
+        <div class="drawer-search">
+            <input type="text" id="clinic-search" placeholder="Search clinics..." oninput="filterClinics()">
+        </div>
+        <p class="drawer-count" id="drawer-count"></p>
+        <ul class="drawer-list" id="drawer-list">
+            <!-- Populated by JS -->
+        </ul>
+    </aside>
+
+    <!-- Chat Container -->
+    <main id="chat-container">
+        <!-- Welcome Message -->
+        <div class="message assistant-message" id="welcome-msg">
+            <img src="assets/natview_logo.jpg" alt="AI" class="message-avatar-img">
+            <div class="message-content">
+                <p>Welcome! I'm the <strong>HEFA AI Data Query Agent</strong>. I can help you with:</p>
+                <ul>
+                    <li><strong>Facility HR Data</strong> — Ask about doctors, nurses, staff strength at any Primary Healthcare Centre.</li>
+                    <li><strong>HEFA Project Info</strong> — Ask about the HEFA platform, NFTI, or Kaduna State Bureau of Statistics.</li>
+                </ul>
+                <p>Try asking: <em>"How many doctors are in PHC Television Garage?"</em></p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Input Area -->
+    <footer id="input-area">
+        <div class="input-wrapper">
+            <input 
+                type="text" 
+                id="user-input" 
+                placeholder="Ask a question about health facilities or the HEFA project..." 
+                autocomplete="off"
+            >
+            <button id="send-btn" onclick="sendMessage()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+            </button>
+        </div>
+        <p class="input-hint">Powered by NFTI &bull; Data from KDBS 2018 Health Facility Census</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
