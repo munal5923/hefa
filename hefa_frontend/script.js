@@ -11,6 +11,12 @@ const userInput = document.getElementById("user-input");
 const sendBtn = document.getElementById("send-btn");
 
 // ===========================
+// Modal Wake-Up Ping
+// ===========================
+// Fire a silent GET request to the root endpoint on load to wake up the Modal backend
+fetch(API_URL.replace("/api/v1/query", "/")).catch(() => {});
+
+// ===========================
 // Valid Clinics (for drawer)
 // ===========================
 const VALID_CLINICS = [
@@ -385,10 +391,10 @@ function appendMessage(role, text) {
         avatar.textContent = "You";
         msgDiv.appendChild(avatar);
     } else {
-        // AI avatar: natview logo image
+        // AI avatar: hefa logo image
         const avatar = document.createElement("img");
         avatar.className = "message-avatar-img";
-        avatar.src = "assets/natview_logo.jpg";
+        avatar.src = "assets/hefa.jpeg";
         avatar.alt = "AI";
         msgDiv.appendChild(avatar);
     }
@@ -408,7 +414,7 @@ function appendAssistantMessage(explanation, sql, rawData) {
 
     const avatar = document.createElement("img");
     avatar.className = "message-avatar-img";
-    avatar.src = "assets/natview_logo.jpg";
+    avatar.src = "assets/hefa.jpeg";
     avatar.alt = "AI";
 
     const content = document.createElement("div");
@@ -455,7 +461,7 @@ function appendError(text) {
 
     const avatar = document.createElement("img");
     avatar.className = "message-avatar-img";
-    avatar.src = "assets/natview_logo.jpg";
+    avatar.src = "assets/hefa.jpeg";
     avatar.alt = "AI";
 
     const content = document.createElement("div");
@@ -475,7 +481,7 @@ function showLoading() {
     msgDiv.id = id;
 
     msgDiv.innerHTML = `
-        <img src="assets/natview_logo.jpg" alt="AI" class="message-avatar-img">
+        <img src="assets/hefa.jpeg" alt="AI" class="message-avatar-img">
         <div class="message-content">
             <div class="loading-dots">
                 <span></span><span></span><span></span>
